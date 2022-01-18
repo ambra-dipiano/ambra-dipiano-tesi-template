@@ -1,0 +1,216 @@
+\documentclass[twoside]{report} %[twoside, 14pt]
+
+% ==== MY BUNCH OF PACKAGES ====
+
+\usepackage[a4paper,top=3cm,bottom=3cm,left=2.5cm,right=2.5cm,bindingoffset=5mm]{geometry}
+\usepackage[english]{babel}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{caption}
+\captionsetup{font=footnotesize}
+\usepackage{subcaption}
+\usepackage{tabularx}
+%\usepackage{mathabx}
+\usepackage{subfiles}
+\newcommand\quoteref[1]{\csname#1\endcsname}%
+\usepackage{glossaries}
+\usepackage[toc,page]{appendix}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{changepage}   % for the adjust width environment
+\usepackage{setspace}
+
+% ----------- code environment settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% ---------------- chapter abstracts
+\newenvironment{chapabstract}
+{
+\begin{center}
+    \noindent\makebox[0.8\linewidth]{\rule{0.8\paperwidth}{0.4pt}}
+\end{center}
+\vspace{2mm}
+\list{}{
+\setlength{\leftmargin}{1cm}
+\setlength{\rightmargin}{\leftmargin}
+}
+\item\relax
+}
+{\par}
+\makeatother
+
+% ------------- hyperref
+%\biboptions{authoryear,square,sort&compress}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+
+% -------------- journals shortcuts 
+\newcommand{\aaa}{Anonymous Ambiguous Abstracts}
+\newcommand{\bbb}{Boring Bibliographic Book}
+
+% ----------- glossary entries for summary of acronyms
+\makenoidxglossaries
+\newglossaryentry{AAA}{name=AAA, description={Ambitious Amicable Ants}}
+\newglossaryentry{BBB}{name=BBBB, description={Babbling Bumbling Band of Baboons}}
+\newglossaryentry{CCC}{name=CCC, description={Condescending Critical Cucumber}}
+\newglossaryentry{BFG}{name=BFG, description={Big Friendly Giant}}
+
+% ==== TEMPLATE PACKAGES ====
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{lmodern}
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}         % fill with latin nonsense       
+
+
+% ----------------------------- BEGIN DOCUMENT
+\begin{document}
+%\nocite{*}
+%\maketitle
+
+% --------------------------------------------------- my front page
+\thispagestyle{empty}
+\begin{titlepage}
+\begin{center}
+\hspace{0.1cm}\hbox{\Large{\textsc{Alma Mater Studiorum $\cdot$ Universit\`a di Bologna}}}
+\vspace{0.5mm}
+\begin{spacing}{0.3}
+\rule{14.8cm}{0.5mm}
+\rule{14.8cm}{0.2mm}
+\end{spacing}
+\vspace{10mm}
+{\small{\bf Scuola del Corso\\
+Dipartimento del Corso\\
+Corso di Laurea Magistrale in Qualcosa\\
+}}
+\vspace{27mm}
+\begin{spacing}{1.4}
+\vspace{1cm}{\LARGE{\bf Some fancy title goes here}}\\
+\vspace{16mm} {\large{\bf Tesi di Laurea}}\vspace{2.5cm}
+\end{spacing}
+\vspace{47mm}
+\par
+\noindent
+\begin{minipage}[t]{0.49\textwidth}
+{\large{\bf Presentata da:\\}
+Nome Cognome}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}\raggedleft
+{\large{\bf Relatore:\\}
+Titolo, Nome Cognome\\
+\vspace{4mm}
+{\bf Co-relatori:\\}
+Titolo, Nome Cognome\\
+Titolo, Nome Cognome}
+\end{minipage}
+\vspace{8mm}
+\begin{spacing}{0.3}
+\rule{14.8cm}{0.2mm}
+\rule{14.8cm}{0.5mm}
+\end{spacing}
+\vspace{5mm}
+{\large{\bf Sessione X \\
+Anno Accademico xxxx-xxxx}}
+\end{center}
+\end{titlepage}
+
+% ----------------------------------------------------- credits 
+\clearpage
+\begin{flushright}
+\textit{This thesis project was carried out in association with Institute Name. Alternatively you can insert a fancy quote here.}
+\end{flushright}
+
+% --------------------------------------------------------- abstract
+\begin{abstract}
+\lipsum[1]
+\end{abstract}
+
+
+% ------------------------------------------ sommario 
+\clearpage
+\renewcommand{\abstractname}{Sommario}
+\begin{abstract}
+\lipsum[2]
+\end{abstract}
+
+% ---------------------------------------------- indice
+\clearpage
+\tableofcontents
+
+% ========= chapters
+\clearpage
+\chapter{Introduction}
+\label{ch1}
+\subfile{ch1-intro}
+
+\clearpage
+\chapter{Monkeys are cute animals}
+\label{ch2}
+\subfile{ch2-monkeys}
+
+\clearpage
+\chapter{Capybaras are absolutely hilarious}
+\label{ch3}
+\subfile{ch3-capy}
+
+% You can add as many chapters as you want
+% Before the Appendix let's give proper thanks to lovely people
+\clearpage
+\begin{adjustwidth}{0cm}{4.5cm}
+\begin{flushleft}
+\textit{\textbf{Acknowledgements}}\\
+\vspace{1cm}
+\lipsum[3]
+\end{flushleft}
+\end{adjustwidth}
+
+% ====== appendix =======
+\clearpage
+\subfile{ch8-appendix}
+
+% ====== glossary =======
+\glsaddall
+\printnoidxglossary[type=\acronymtype,title=Acronyms,nonumberlist]
+
+% ========== BIBLIOGRAPHY ============
+\clearpage
+\bibliographystyle{elsarticle-num-names}
+\bibliography{2-references}{}
+
+\end{document}
